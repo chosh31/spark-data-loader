@@ -11,7 +11,7 @@ import org.apache.spark.sql.{DataFrame, SQLContext, SaveMode, SparkSession}
 object KafkaProblemTest {
   def main(args: Array[String]) {
     
-    val sc = new SparkConf().setAppName("Main").set("spark.driver.allowMultipleContexts","true").setMaster("local[4]")
+    val sc = new SparkConf().setAppName("Main").set("spark.hadoop.outputCommitCoordination.enabled", "false").set("spark.driver.allowMultipleContexts","true").setMaster("local[4]")
 
     val sparkSession = SparkSession.builder().config(sc).getOrCreate()
     val sqlContext = sparkSession.sqlContext
